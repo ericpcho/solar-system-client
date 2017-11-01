@@ -2,7 +2,7 @@ import * as actions from '../actions/actions.js'
 
 
 const initialState = {
-  view: 'home',
+  view: 'choosePlanet',
   currentPlanet: '',
   loading: false,
   error: null
@@ -18,6 +18,7 @@ export const reducer = (state = initialState, action) => {
 
   else if (action.type === actions.FETCH_PLANET_SUCCESS) {
     return Object.assign({}, state, {
+      view: 'planetWithSearch',
       loading: false,
       currentPlanet: action.planet
     })

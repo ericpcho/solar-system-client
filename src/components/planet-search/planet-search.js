@@ -1,21 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/actions.js';
-import './planet-select.css';
+import './planet-search.css';
 
-export class PlanetSelect extends React.Component {
+export class PlanetSearch extends React.Component {
 
-handlePlanetSelection(event) {
+handlePlanetSearch(event) {
     event.preventDefault();
   console.log('im being clicked')        
-    let planetSelection = this.input.value;
-    this.props.dispatch(actions.fetchPlanet(planetSelection))
+    let planet = this.input.value;
+    this.props.dispatch(actions.fetchPlanet(planet))
   }
 
   render() {
 
     return (
-      <form onSubmit={(event) =>this.handlePlanetSelection(event)}>
+      <form onSubmit={(event) =>this.handlePlanetSearch(event)}>
         <select ref={input => this.input = input}>
           <option value="Mercury">Mercury</option>
           <option value="Venus">Venus</option>
@@ -26,11 +26,11 @@ handlePlanetSelection(event) {
           <option value="Uranus">Uranus</option>
           <option value="Neptune">Neptune</option>
         </select>
-        <button className="button">Select</button>
+        <button className="searchPlanetButton">Search</button>
       </form>
     )
   }
 
 }
 
-export default connect()(PlanetSelect);
+export default connect()(PlanetSearch);
