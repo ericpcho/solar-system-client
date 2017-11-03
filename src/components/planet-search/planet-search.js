@@ -7,7 +7,6 @@ export class PlanetSearch extends React.Component {
 
 handlePlanetSearch(event) {
     event.preventDefault();
-  console.log('im being clicked')        
     let planet = this.input.value;
     this.props.dispatch(actions.fetchPlanet(planet))
   }

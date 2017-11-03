@@ -2,8 +2,9 @@ import * as actions from '../actions/actions.js'
 
 
 const initialState = {
+  loggedIn: false,
   view: 'choosePlanet',
-  currentPlanet: '',
+  currentPlanet: [],
   loading: false,
   error: null
 };

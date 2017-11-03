@@ -6,8 +6,9 @@ export const fetchPlanetRequest = () => ({
 })
 
 export const FETCH_PLANET_SUCCESS = 'FETCH_PLANET_SUCCESS'
-export const fetchPlanetSuccess = () => ({
-  type: FETCH_PLANET_SUCCESS
+export const fetchPlanetSuccess = (planet) => ({
+  type: FETCH_PLANET_SUCCESS,
+  planet
 })
 
 export const FETCH_PLANET_ERROR = 'FETCH_PLANET_ERROR'

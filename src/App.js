@@ -1,5 +1,5 @@
 import React from 'react';
-import PlanetSelect from './components/planet-select/planet-select';
+import PlanetSearch from './components/planet-search/planet-search';
 import Home from './components/home/home';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
