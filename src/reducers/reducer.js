@@ -31,5 +31,17 @@ export const reducer = (state = initialState, action) => {
     })
   }
 
+  else if (action.type === actions.GO_TO_LOGIN) {
+    return Object.assign({}, state, {
+      view: 'loginPage'
+    })
+  }
+
+  else if (action.type === actions.GO_TO_SIGNUP) {
+    return Object.assign({}, state, {
+      view: 'signupPage'
+    })
+  }
+
   return state
 }

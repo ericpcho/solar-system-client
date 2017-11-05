@@ -4,6 +4,8 @@ import * as actions from '../../actions/actions.js';
 import PlanetSearch from '../planet-search/planet-search';
 import SearchResults from '../search-results/search-results';
 import NavBar from '../nav-bar/nav-bar';
+import LoginPage from '../login-page/login-page';
+import SignupPage from '../signup-page/signup-page';
 
 export class Home extends React.Component {
 
@@ -12,6 +14,8 @@ export class Home extends React.Component {
   render() {
 
     let searchResults;
+    let loginPage;
+    let signupPage;
 
     if (this.props.view === 'planetWithSearch') {
       searchResults = this.props.currentPlanet.map((planet, key) => (
@@ -20,15 +24,38 @@ export class Home extends React.Component {
       ))
     }
 
+    else if (this.props.view === 'loginPage') {
+      loginPage = <LoginPage/> 
+    }
+
+    else if (this.props.view === 'signupPage') {
+      loginPage = <SignupPage/> 
+    }
+    
+
+    if (this.props.view === 'loginPage' || this.props.view === 'signupPage') {
       return (
-        <div classname="home">
+    <div> 
+      <NavBar/>
+      <div> 
+      {loginPage}
+      {signupPage}
+      </div>
+      </div>
+      )
+    }
+
+    else {
+      return (
+        <div className="home">
           <NavBar/>
-          <div classname="home-content">
+          <div className="home-content">
             <PlanetSearch />
             {searchResults}
           </div>
         </div>
       )
+    }
 
   }
 }
