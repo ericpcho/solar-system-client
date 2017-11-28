@@ -17,23 +17,23 @@ export class Home extends React.Component {
     let loginPage;
     let signupPage;
 
-    if (this.props.view === 'planetWithSearch') {
+    if (this.props.main.view === 'planetWithSearch') {
       searchResults = this.props.currentPlanet.map((planet, key) => (
         <SearchResults key={key} name={planet.name} composition={planet.composition} 
         description={planet.description} thumbnail={planet.thumbnail}/>
       ))
     }
 
-    else if (this.props.view === 'loginPage') {
+    else if (this.props.main.view === 'loginPage') {
       loginPage = <LoginPage/> 
     }
 
-    else if (this.props.view === 'signupPage') {
+    else if (this.props.main.view === 'signupPage') {
       loginPage = <SignupPage/> 
     }
     
 
-    if (this.props.view === 'loginPage' || this.props.view === 'signupPage') {
+    if (this.props.main.view === 'loginPage' || this.props.main.view === 'signupPage') {
       return (
     <div> 
       <NavBar/>
@@ -61,8 +61,7 @@ export class Home extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  view: state.view,
-  currentPlanet: state.currentPlanet
+  main: state.main
 })
 
 

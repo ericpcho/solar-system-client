@@ -11,7 +11,7 @@ export class NavBar extends React.Component {
 
   render() {
 
-    if (this.props.loggedIn === false) {
+    if (this.props.main.loggedIn === false) {
       return (
         <nav>
           <ul>
@@ -22,7 +22,7 @@ export class NavBar extends React.Component {
       )
     }
 
-    else if (this.props.loggedIn === true) {
+    else if (this.props.main.loggedIn === true) {
       return (
         <nav>
           <ul>
@@ -40,7 +40,7 @@ export class NavBar extends React.Component {
 
 
 const mapStateToProps = state => ({
-  loggedIn: state.loggedIn
+  main: state.main
 })
 
 export default connect(mapStateToProps)(NavBar);

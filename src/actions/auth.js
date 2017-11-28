@@ -5,7 +5,6 @@ import {SubmissionError} from 'redux-form';
 import {fromByteArray} from 'base64-js';
 import {TextEncoder} from 'text-encoding';
 
-import {API_BASE_URL} from '../config';
 import {saveAuthToken, clearAuthToken} from '../local-storage';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
