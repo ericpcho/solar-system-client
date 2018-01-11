@@ -17,10 +17,17 @@ export class Home extends React.Component {
     let loginPage;
     let signupPage;
 
-    if (this.props.main.view === 'planetWithSearch') {
+    if (this.props.main.view === 'planetWithSearch' && this.props.auth.loggedIn === false) {
       searchResults = this.props.main.currentPlanet.map((planet, key) => (
         <SearchResults key={key} name={planet.name} composition={planet.composition} 
         description={planet.description} thumbnail={planet.thumbnail}/>
+      ))
+    }
+
+    else if (this.props.main.view === 'planetWithSearch' && this.props.auth.loggedIn === true) {
+      searchResults = this.props.main.currentPlanet.map((planet, key) => (
+        <SearchResults key={key} name={planet.name} composition={planet.composition} 
+        description={planet.description} thumbnail={planet.thumbnail} comments={planet.comments}/>
       ))
     }
 
