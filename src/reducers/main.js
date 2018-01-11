@@ -42,5 +42,11 @@ export const reducer = (state = initialState, action) => {
     })
   }
 
+  else if (action.type === actions.GO_TO_CHOOSEPLANET) {
+    return Object.assign({}, state, {
+      view: 'choosePlanet'
+    })
+  }
+
   return state
 }

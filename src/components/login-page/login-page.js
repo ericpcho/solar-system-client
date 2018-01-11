@@ -1,13 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/actions.js';
+import * as auth from '../../actions/auth.js';
+import { reduxForm, Field } from 'redux-form';
+import { compose } from 'redux';
 
 export class LoginPage extends React.Component {
 
-  // handlePlanetSearch(event) {
-  //     event.preventDefault();
-  //     this.props.dispatch(actions.authenticateUser())
-  //   }
+  handleLogin(values) {
+    const {username, password} = values;
+    const user = {username, password}
+      this.props.dispatch(auth.login(user))
+      .then(() => this.props.dispatch(actions.goToChoosePlanet()))
+    }
 
     onClick(event) {
       event.preventDefault();
@@ -18,12 +23,12 @@ export class LoginPage extends React.Component {
 
     return (
       <div> 
-      <form onSubmit={(event) => this.handleLogin(event)}>
+        <form onSubmit={this.props.handleSubmit(values => this.handleLogin(values))}>
         <label>Username
-          <input type='text' placeholder='username' />
+        <Field component='input' type='text' name='username' id='username' placeholder='username' required/>
         </label>
         <label>Password
-          <input type='text' placeholder='password' />
+        <Field component='input' type='text' name='password' id='password' placeholder='password' required/>
         </label>
         <button className="searchPlanetButton">Sign In</button>
       </form>
@@ -31,7 +36,11 @@ export class LoginPage extends React.Component {
       </div>
     )
   }
+  
 
 }
 
-export default connect()(LoginPage);
+export default compose(
+  connect(),
+  reduxForm({form:'login-page'}) 
+)(LoginPage);

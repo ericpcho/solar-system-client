@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/actions.js';
 import * as users from '../../actions/users.js';
+import * as auth from '../../actions/auth.js';
 import { reduxForm, Field } from 'redux-form';
 import { compose } from 'redux';
+import { goToSignup, GoToChoosePlanet } from '../../actions/actions.js';
 
 
 export class SignupPage extends React.Component {
@@ -13,6 +15,7 @@ export class SignupPage extends React.Component {
     const {username, password} = values;
     const user = {username, password}
     this.props.dispatch(users.registerUser(user))
+    .then(() => this.props.dispatch(auth.login(user)))
   }
 
   render() {

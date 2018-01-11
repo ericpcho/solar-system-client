@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/actions.js';
+import * as auth from '../../actions/auth.js';
+import {clearAuthToken} from '../../local-storage';
 
 export class NavBar extends React.Component {
 
@@ -9,9 +11,14 @@ export class NavBar extends React.Component {
     this.props.dispatch(actions.goToLogin())
   }
 
+  logOut(event) {
+    this.props.dispatch(auth.clearAuth());
+    clearAuthToken();
+  }
+
   render() {
 
-    if (this.props.main.loggedIn === false) {
+    if (this.props.auth.loggedIn === false) {
       return (
         <nav>
           <ul>
@@ -22,12 +29,12 @@ export class NavBar extends React.Component {
       )
     }
 
-    else if (this.props.main.loggedIn === true) {
+    else if (this.props.auth.loggedIn === true) {
       return (
         <nav>
           <ul>
             <li>Home</li>
-            <li>Log Out</li>
+            <li><a onClick={(event) =>this.logOut(event)}>Log Out</a></li>
           </ul>
         </nav>
       )
@@ -40,7 +47,8 @@ export class NavBar extends React.Component {
 
 
 const mapStateToProps = state => ({
-  main: state.main
+  main: state.main,
+  auth: state.auth
 })
 
 export default connect(mapStateToProps)(NavBar);

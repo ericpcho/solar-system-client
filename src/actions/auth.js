@@ -13,6 +13,11 @@ export const setAuthToken = authToken => ({
     authToken
 });
 
+export const CLEAR_AUTH = 'CLEAR_AUTH';
+export const clearAuth = () => ({
+    type: CLEAR_AUTH
+});
+
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const setCurrentUser = currentUser => ({
     type: SET_CURRENT_USER,
@@ -35,12 +40,20 @@ const storeAuthInfo = (authToken, dispatch) => {
     saveAuthToken(authToken);
 };
 
-export const login = (username, password) => dispatch => {
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const authSuccess = (loggedIn, currentUser) => ({
+    type: AUTH_SUCCESS,
+    loggedIn,
+    currentUser
+});
+
+export const login = (user) => dispatch => {
     // Base64 encode the string username:password, used in the basic
     // auth field
-    const token = base64EncodingUTF8(`${username}:${password}`);
+    console.log(user)
+    const token = base64EncodingUTF8(`${user.username}:${user.password}`);
     return (
-        fetch(`${API_BASE_URL}/auth/login`, {
+        fetch(`${API_BASE_URL}/api/auth/login`, {
             method: 'POST',
             headers: {
                 // Provide our username and password as login credentials
@@ -51,6 +64,7 @@ export const login = (username, password) => dispatch => {
             // errors which follow a consistent format
             .then(res => res.json())
             .then(({authToken}) => storeAuthInfo(authToken, dispatch))
+            .then(() => dispatch(authSuccess()))
             .catch(err => {
                 const {code} = err;
                 if (code === 401) {

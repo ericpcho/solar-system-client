@@ -18,7 +18,7 @@ export class Home extends React.Component {
     let signupPage;
 
     if (this.props.main.view === 'planetWithSearch') {
-      searchResults = this.props.currentPlanet.map((planet, key) => (
+      searchResults = this.props.main.currentPlanet.map((planet, key) => (
         <SearchResults key={key} name={planet.name} composition={planet.composition} 
         description={planet.description} thumbnail={planet.thumbnail}/>
       ))
@@ -61,7 +61,8 @@ export class Home extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  main: state.main
+  main: state.main,
+  auth: state.auth
 })
 
 
