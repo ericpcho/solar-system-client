@@ -44,3 +44,29 @@ export const goToChoosePlanet = () => ({
   type: GO_TO_CHOOSEPLANET,
 })
 
+export const GO_HOME = 'GO_HOME'
+export const goHome = () => ({
+  type: GO_HOME,
+})
+
+export const saveComment = (planet, content, username) => (dispatch, getState) => {
+  // dispatch(saveCommentRequest());
+    const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/api/planets/${planet}/comments`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+  },
+    body: JSON.stringify(content, username)
+  })
+  .then(res => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText)
+    }
+    return res.json()
+  })
+  // .then((planet) => dispatch(fetchPlanetSuccess(planet)))
+  .catch(error => dispatch (fetchPlanetError(error)))
+}
+

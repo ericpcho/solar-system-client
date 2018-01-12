@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/actions.js';
 import PlanetSearch from '../planet-search/planet-search';
 import SearchResults from '../search-results/search-results';
+import AddComment from '../add-comment/add-comment';
 import NavBar from '../nav-bar/nav-bar';
 import LoginPage from '../login-page/login-page';
 import SignupPage from '../signup-page/signup-page';
@@ -16,6 +17,7 @@ export class Home extends React.Component {
     let searchResults;
     let loginPage;
     let signupPage;
+    let addComment;
 
     if (this.props.main.view === 'planetWithSearch' && this.props.auth.loggedIn === false) {
       searchResults = this.props.main.currentPlanet.map((planet, key) => (
@@ -29,6 +31,7 @@ export class Home extends React.Component {
         <SearchResults key={key} name={planet.name} composition={planet.composition} 
         description={planet.description} thumbnail={planet.thumbnail} comments={planet.comments}/>
       ))
+      addComment = <AddComment/>
     }
 
     else if (this.props.main.view === 'loginPage') {
@@ -59,6 +62,7 @@ export class Home extends React.Component {
           <div className="home-content">
             <PlanetSearch />
             {searchResults}
+            {addComment}
           </div>
         </div>
       )

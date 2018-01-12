@@ -16,13 +16,17 @@ export class NavBar extends React.Component {
     clearAuthToken();
   }
 
+  goHome() {
+    this.props.dispatch(actions.goHome())
+  }
+
   render() {
 
     if (this.props.auth.loggedIn === false) {
       return (
         <nav>
           <ul>
-            <li>Home</li>
+            <li><a onClick={(event) =>this.goHome(event)}>Home</a></li>
             <li><a onClick={(event) =>this.clickSignIn(event)}>Sign In</a></li>
           </ul>
         </nav>

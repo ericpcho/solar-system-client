@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/actions.js';
 import * as auth from '../../actions/auth.js';
+import * as users from '../../actions/users.js'
 import { reduxForm, Field } from 'redux-form';
 import { compose } from 'redux';
 
@@ -12,6 +13,7 @@ export class LoginPage extends React.Component {
     const user = {username, password}
       this.props.dispatch(auth.login(user))
       .then(() => this.props.dispatch(actions.goToChoosePlanet()))
+      .then(() => this.props.dispatch(auth.setCurrentUser(values.username)))
     }
 
     onClick(event) {
