@@ -14,7 +14,7 @@ handlePlanetSearch(event) {
   render() {
 
     return (
-      <form onSubmit={(event) =>this.handlePlanetSearch(event)}>
+      <form className="planet-form" onSubmit={(event) =>this.handlePlanetSearch(event)}>
         <select ref={input => this.input = input}>
           <option value="Mercury">Mercury</option>
           <option value="Venus">Venus</option>

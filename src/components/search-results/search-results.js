@@ -10,20 +10,23 @@ export class SearchResults extends React.Component {
 
   render() {
 
-let comments;
+    let comments;
 
-if (this.props.auth.loggedIn === true) {
-  comments = this.props.comments.map((comment, key) => (<div><p>{comment.username} {comment.content}</p>
-    <button className='btn btn-default delete-button' onClick={event => this.onClick(key)}><i className="fa fa-trash-o" aria-hidden="true"></i></button></div>
-  ))
-}
+    if (this.props.auth.loggedIn === true) { 
+      comments = this.props.comments.map((comment, key) => (
+        <div>
+          <p>{comment.username} {comment.content}</p>
+          {this.props.auth.currentUser === comment.username ? <button className='btn btn-default delete-button' onClick={event => this.onClick(key)}><i className="fa fa-trash-o" aria-hidden="true"></i></button> : '' }
+        </div>
+      ))
+    }
 
     return (
       <div>
         Here's my data: {this.props.name}
         {this.props.description}
         {this.props.composition}
-        <img src={`${this.props.thumbnail}`}/>
+        <img src={`${this.props.thumbnail}`} />
         {comments}
       </div>
     )

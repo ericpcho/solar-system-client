@@ -7,6 +7,7 @@ import AddComment from '../add-comment/add-comment';
 import NavBar from '../nav-bar/nav-bar';
 import LoginPage from '../login-page/login-page';
 import SignupPage from '../signup-page/signup-page';
+import './home.css';
 
 export class Home extends React.Component {
 

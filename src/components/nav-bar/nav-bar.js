@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/actions.js';
 import * as auth from '../../actions/auth.js';
 import {clearAuthToken} from '../../local-storage';
+import './nav-bar.css'
+
 
 export class NavBar extends React.Component {
 
@@ -24,10 +26,10 @@ export class NavBar extends React.Component {
 
     if (this.props.auth.loggedIn === false) {
       return (
-        <nav>
-          <ul>
-            <li><a onClick={(event) =>this.goHome(event)}>Home</a></li>
-            <li><a onClick={(event) =>this.clickSignIn(event)}>Sign In</a></li>
+        <nav className="nav-bar">
+          <ul className="nav-ul">
+            <li className="nav-li"><a onClick={(event) =>this.goHome(event)}>Home</a></li>
+            <li className="nav-li"><a onClick={(event) =>this.clickSignIn(event)}>Sign In</a></li>
           </ul>
         </nav>
       )
@@ -35,10 +37,10 @@ export class NavBar extends React.Component {
 
     else if (this.props.auth.loggedIn === true) {
       return (
-        <nav>
-          <ul>
-            <li>Home</li>
-            <li><a onClick={(event) =>this.logOut(event)}>Log Out</a></li>
+        <nav className="nav-bar">
+          <ul className="nav-ul">
+            <li className="nav-li">Home</li>
+            <li className="nav-li"><a onClick={(event) =>this.logOut(event)}>Log Out</a></li>
           </ul>
         </nav>
       )
