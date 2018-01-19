@@ -4,12 +4,18 @@ import * as actions from '../../actions/actions.js';
 
 export class SearchResults extends React.Component {
 
+  onClick(key) {
+    this.props.dispatch(actions.deleteComment(this.props.main.currentPlanet[0]._id, this.props.main.currentPlanet[0].comments[key]._id, this.props.main.currentPlanet[0].name))
+  }
+
   render() {
 
 let comments;
 
 if (this.props.auth.loggedIn === true) {
-  comments = this.props.comments.map((comment, key) => (<p>{comment.username} {comment.content}</p>))
+  comments = this.props.comments.map((comment, key) => (<div><p>{comment.username} {comment.content}</p>
+    <button className='btn btn-default delete-button' onClick={event => this.onClick(key)}><i className="fa fa-trash-o" aria-hidden="true"></i></button></div>
+  ))
 }
 
     return (
@@ -25,6 +31,7 @@ if (this.props.auth.loggedIn === true) {
 }
 
 const mapStateToProps = state => ({
+  main: state.main,
   auth: state.auth
 })
 

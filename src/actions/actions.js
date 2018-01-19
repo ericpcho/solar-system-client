@@ -49,7 +49,7 @@ export const goHome = () => ({
   type: GO_HOME,
 })
 
-export const saveComment = (planet, content, username) => (dispatch, getState) => {
+export const saveComment = (planet, content) => (dispatch, getState) => {
   // dispatch(saveCommentRequest());
     const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/planets/${planet}/comments`, {
@@ -58,15 +58,33 @@ export const saveComment = (planet, content, username) => (dispatch, getState) =
       'content-type': 'application/json',
       Authorization: `Bearer ${authToken}`
   },
-    body: JSON.stringify(content, username)
+    body: JSON.stringify({content: content})
   })
   .then(res => {
     if (!res.ok) {
       return Promise.reject(res.statusText)
     }
-    return res.json()
+    dispatch(fetchPlanet(planet))
   })
-  // .then((planet) => dispatch(fetchPlanetSuccess(planet)))
-  .catch(error => dispatch (fetchPlanetError(error)))
+  .catch(error => console.log(error))
 }
 
+export const deleteComment = (planet, comment, name) => (dispatch, getState) => {
+  // dispatch(saveCommentRequest());
+  console.log(name)
+    const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/api/planets/${planet}/comments/${comment}`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+  }
+  })
+  .then(res => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText)
+    }
+    dispatch(fetchPlanet(name))
+  })
+  .catch(error => console.log(error))
+}

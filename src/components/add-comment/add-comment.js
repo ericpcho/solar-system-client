@@ -6,10 +6,11 @@ import {clearAuthToken} from '../../local-storage';
 
 export class AddComment extends React.Component {
 
-  onSubmit() {
+  onSubmit(event) {
+    event.preventDefault()
     const comment = this.textInput.value
-    console.log(this.props.main.currentPlanet[0].name, comment, this.props.auth.currentUser)
-    this.props.dispatch(actions.saveComment(this.props.main.currentPlanet[0].name, comment, this.props.auth.currentUser))
+    console.log(this.props.main.currentPlanet[0].name, comment)
+    this.props.dispatch(actions.saveComment(this.props.main.currentPlanet[0].name, comment))
   }
 
 
