@@ -1,3 +1,9 @@
 .planet-form {
   text-align: center;
+  padding: 25px;
+}
+
+.searchPlanetButton {
+  margin: 10px;
+  width: 75px;
 }

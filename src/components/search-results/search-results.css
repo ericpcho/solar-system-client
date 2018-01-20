@@ -1,0 +1,60 @@
+.planet-name {
+
+}
+
+.planet-description {
+  padding-left: 25px;
+  font-size: 13px;
+}
+
+.planet-image {
+  float: left;
+  height: 300px;
+  width: 300px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 10px;
+}
+
+.planet-list {
+  font-size: 13px;
+  text-decoration: none;
+  padding-left: 25px;
+}
+
+.comments {
+  clear:both;
+  margin-left: 25px;
+  border: 1px solid black;
+}
+
+.sub-comments{
+  font-size: 10px;
+  clear: both;
+  padding-left: 25px;
+  display: flex;
+}
+
+.sub-comment-a {
+  margin-left: 2px;
+  margin-right: 2px;
+  border-bottom: .5px solid blue;
+  color: blue;
+}
+
+.sub-comment-a:hover{
+  cursor: pointer;
+}
+
+.delete-button {
+  height: 1px;
+  width: 1px;
+  display: inline-block;
+  border: none;
+  text-decoration: none;
+  padding-top: 9px;
+}
+
+.delete-button:hover {
+  cursor: pointer;
+}

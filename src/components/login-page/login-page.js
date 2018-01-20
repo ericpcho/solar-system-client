@@ -5,6 +5,7 @@ import * as auth from '../../actions/auth.js';
 import * as users from '../../actions/users.js'
 import { reduxForm, Field } from 'redux-form';
 import { compose } from 'redux';
+import './login-page.css'
 
 export class LoginPage extends React.Component {
 
@@ -24,17 +25,21 @@ export class LoginPage extends React.Component {
   render() {
 
     return (
-      <div> 
+      <div className="login-page"> 
         <form onSubmit={this.props.handleSubmit(values => this.handleLogin(values))}>
-        <label>Username
-        <Field component='input' type='text' name='username' id='username' placeholder='username' required/>
+        <div className="username">
+        <label className="username-label">Username
+        <Field className="username-field" component='input' type='text' name='username' id='username' placeholder='username' required/>
         </label>
-        <label>Password
-        <Field component='input' type='text' name='password' id='password' placeholder='password' required/>
+        </div>
+        <div className="password">
+        <label className="password-label">Password
+        <Field className="password-field" component='input' type='text' name='password' id='password' placeholder='password' required/>
         </label>
-        <button className="searchPlanetButton">Sign In</button>
+        </div>
+        <button className="signin-button">Sign In</button>
       </form>
-      <span>Don't have an account? <a onClick={event => this.onClick(event)}>Sign up here.</a></span>
+      <span>Don't have an account? <a className="signup-anchor" onClick={event => this.onClick(event)}>Sign up here.</a></span>
       </div>
     )
   }

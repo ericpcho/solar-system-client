@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/actions.js';
 import * as auth from '../../actions/auth.js';
 import {clearAuthToken} from '../../local-storage';
+import './add-comment.css'
 
 export class AddComment extends React.Component {
 
@@ -11,16 +12,18 @@ export class AddComment extends React.Component {
     const comment = this.textInput.value
     console.log(this.props.main.currentPlanet[0].name, comment)
     this.props.dispatch(actions.saveComment(this.props.main.currentPlanet[0].name, comment))
+    this.textInput.value = ''
   }
 
 
   render() {
 
       return (
-        <div>
-         <form onSubmit={(e) => this.onSubmit(e)}>
-           <label>Add A Comment:
+        <div className="add-comments">
+         <form className="add-comment-form" onSubmit={(e) => this.onSubmit(e)}>
+           <label className="add-comment-label" >Add A Comment:
           <input 
+          className="add-comment-input"
           type="text"
           ref={(input) => {this.textInput = input;}}
           />

@@ -1,0 +1,17 @@
+.add-comments {
+  margin-left: 25px;
+  padding-top: 25px;
+  clear: both;
+}
+
+.add-comment-form {
+  margin-right: 5px;
+}
+
+.add-comment-label {
+  margin-right: 5px;
+}
+
+.add-comment-input{
+  margin: 5px;
+}
