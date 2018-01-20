@@ -52,7 +52,9 @@ export class Home extends React.Component {
       {loginPage}
       {signupPage}
       </div>
+      <footer className="footer"> </footer>
       </div>
+      
       )
     }
 
@@ -65,7 +67,9 @@ export class Home extends React.Component {
             {searchResults}
             {addComment}
           </div>
+          <footer className="footer"> </footer>
         </div>
+        
       )
     }
 

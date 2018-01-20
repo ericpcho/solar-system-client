@@ -16,6 +16,8 @@ export class SignupPage extends React.Component {
     const user = {username, password}
     this.props.dispatch(users.registerUser(user))
     .then(() => this.props.dispatch(auth.login(user)))
+    .then(() => this.props.dispatch(auth.setCurrentUser(values.username)))
+    .then(() => this.props.dispatch(actions.goToChoosePlanet()))
   }
 
   render() {

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/actions.js';
 import './search-results.css'
+
 export class SearchResults extends React.Component {
 
   onClick(key) {
@@ -19,16 +20,17 @@ export class SearchResults extends React.Component {
 
     if (this.props.auth.loggedIn === true) { 
       comments = this.props.comments.map((comment, key) => (
-        <div className="sub-comments">
-          <p>{comment.username}: {comment.content}</p>
-          {this.props.auth.currentUser === comment.username ? <button className='btn btn-default delete-button' onClick={event => this.onClick(key)}><i className="fa fa-trash-o" aria-hidden="true"></i></button> : '' }
+        <div className="sub-comments" id="sub-comments">
+          <p >{comment.username}: {comment.content}</p>
+          {this.props.auth.currentUser === comment.username ? <button className='btn btn-default delete-button' onClick={event => this.onClick(key)}>delete</button> : '' }
         </div>
       ))
     }
 
     if (this.props.auth.loggedIn === false) { 
-      comments = <p className="sub-comments" >Please <a className="sub-comment-a" onClick={(event) =>this.clickSignIn(event)}> login </a> to view comments</p>
+      comments = <p className="sub-comments" id="sub-comments" >Please <a className="sub-comment-a" onClick={(event) =>this.clickSignIn(event)}> login </a> to view comments</p>
     }
+    
 
     return (
       <div className="search-results">
@@ -36,7 +38,8 @@ export class SearchResults extends React.Component {
         <h1 className ="planet-name">{this.props.name}</h1>
         <p className="planet-description">{this.props.description}</p>
         <p className="planet-list">{this.props.composition}</p>
-        {comments}
+        <div className="scroll-box" id="scroll-box">{comments}</div> 
+        
       </div>
     )
   }

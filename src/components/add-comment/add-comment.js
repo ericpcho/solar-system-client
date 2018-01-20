@@ -7,12 +7,20 @@ import './add-comment.css'
 
 export class AddComment extends React.Component {
 
+
+  scrollToTop() {
+    var myDiv = document.getElementById('scroll-box');
+    myDiv.scrollTop = myDiv.scrollHeight;
+  }
+
   onSubmit(event) {
     event.preventDefault()
     const comment = this.textInput.value
     console.log(this.props.main.currentPlanet[0].name, comment)
     this.props.dispatch(actions.saveComment(this.props.main.currentPlanet[0].name, comment))
+    .then(() => setTimeout(this.scrollToTop, 500));
     this.textInput.value = ''
+
   }
 
 

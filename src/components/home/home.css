@@ -1,4 +1,9 @@
 .home {
   width: 100%;
   margin: auto;
+  font-family: 'Crimson Text', serif;
+}
+
+* {
+  font-family: 'Crimson Text', serif;
 }

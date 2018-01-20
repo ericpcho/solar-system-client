@@ -1,6 +1,16 @@
-.planet-name {
-
+.search-results{
+  position: relative;
 }
+
+.scroll-box {
+clear: both;
+height: 100px;
+overflow: auto;
+overflow-x: hidden;
+display: flex;
+flex-direction: column;
+}
+
 
 .planet-description {
   padding-left: 25px;
@@ -22,20 +32,15 @@
   padding-left: 25px;
 }
 
-.comments {
-  clear:both;
-  margin-left: 25px;
-  border: 1px solid black;
-}
-
 .sub-comments{
+  display: inline-block;
   font-size: 10px;
   clear: both;
   padding-left: 25px;
-  display: flex;
 }
 
 .sub-comment-a {
+  display: inline-block;
   margin-left: 2px;
   margin-right: 2px;
   border-bottom: .5px solid blue;
@@ -47,12 +52,8 @@
 }
 
 .delete-button {
-  height: 1px;
-  width: 1px;
   display: inline-block;
-  border: none;
   text-decoration: none;
-  padding-top: 9px;
 }
 
 .delete-button:hover {
