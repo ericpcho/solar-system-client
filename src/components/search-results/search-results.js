@@ -21,8 +21,8 @@ export class SearchResults extends React.Component {
     if (this.props.auth.loggedIn === true) { 
       comments = this.props.comments.map((comment, key) => (
         <div className="sub-comments" id="sub-comments">
-          <p >{comment.username}: {comment.content}</p>
-          {this.props.auth.currentUser === comment.username ? <button className='btn btn-default delete-button' onClick={event => this.onClick(key)}>delete</button> : '' }
+          <p className="comments">{comment.username}: {comment.content}</p>
+          {this.props.auth.currentUser === comment.username ? <button className="btn btn-default delete-button" onClick={event => this.onClick(key)}>delete</button> : '' }
         </div>
       ))
     }
