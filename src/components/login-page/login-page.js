@@ -25,6 +25,7 @@ export class LoginPage extends React.Component {
   render() {
 
     return (
+      <section>
       <div className="login-page"> 
         <form onSubmit={this.props.handleSubmit(values => this.handleLogin(values))}>
         <div className="username">
@@ -41,6 +42,10 @@ export class LoginPage extends React.Component {
       </form>
       <span>Don't have an account? <a className="signup-anchor" onClick={event => this.onClick(event)}>Sign up here.</a></span>
       </div>
+      <h4 className="demo-login">Demo Login:</h4>
+        <p className="demo-username">username: <i>John Smith</i></p> <p className="demo-password">password: <i>John Smith</i></p>
+        
+      </section>
     )
   }
   

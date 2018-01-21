@@ -11,6 +11,12 @@
   width: 300px;
 }
 
+.demo-login, .demo-username, .demo-password {
+  margin: auto;
+  text-align: center;
+  padding: 5px;
+}
+
 .username {
   padding: 15px;
 }
