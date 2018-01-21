@@ -47,11 +47,17 @@ export const authSuccess = (loggedIn, currentUser) => ({
     currentUser
 });
 
+export const AUTH_REQUEST = 'AUTH_REQUEST';
+export const authRequest = () => ({
+    type: AUTH_REQUEST
+});
+
 export const login = (user) => dispatch => {
     // Base64 encode the string username:password, used in the basic
     // auth field
     console.log(user)
     const token = base64EncodingUTF8(`${user.username}:${user.password}`);
+    dispatch(authRequest());
     return (
         fetch(`${API_BASE_URL}/api/auth/login`, {
             method: 'POST',

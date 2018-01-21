@@ -1,9 +1,10 @@
-import {SET_AUTH_TOKEN, SET_CURRENT_USER, AUTH_SUCCESS, CLEAR_AUTH} from '../actions/auth';
+import {SET_AUTH_TOKEN, SET_CURRENT_USER, AUTH_SUCCESS, CLEAR_AUTH, AUTH_REQUEST} from '../actions/auth';
 
 const initialState = {
     authToken: null, // authToken !== null does not mean it has been validated
     currentUser: null,
-    loggedIn: false
+    loggedIn: false,
+    loading: false
 };
 
 export const reducer = (state = initialState, action) => {
@@ -16,9 +17,15 @@ export const reducer = (state = initialState, action) => {
             currentUser: action.currentUser
         });
     }
+    else if (action.type === AUTH_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true
+        });
+    }
     else if (action.type === AUTH_SUCCESS) {
         return Object.assign({}, state, {
             loggedIn: true,
+            loading: false,
             currentUser: action.currentUser
         });
     }
