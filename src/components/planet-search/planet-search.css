@@ -13,3 +13,16 @@
 .select {
   font-size: 17px;
 }
+
+.description {
+  text-align: center;
+  font-size: 15px;
+  padding-top: 15px;
+  display: block;
+}
+
+.description > span {
+  font-size: 20px;
+  display: block;
+  font-weight: bold;
+}

@@ -14,6 +14,8 @@ handlePlanetSearch(event) {
   render() {
 
     return (
+      <div>
+        <p className="description" ><span>Solar System App</span>Explore our solar system by searching basic information about the planets and commenting with other users.</p>
       <form className="planet-form" onSubmit={(event) =>this.handlePlanetSearch(event)}>
         <select className="select" ref={input => this.input = input}>
           <option value="Mercury">Mercury</option>
@@ -27,6 +29,7 @@ handlePlanetSearch(event) {
         </select>
         <button className="searchPlanetButton">Search</button>
       </form>
+      </div>
     )
   }
 
