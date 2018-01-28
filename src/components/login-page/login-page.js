@@ -5,7 +5,6 @@ import * as auth from '../../actions/auth.js';
 import * as users from '../../actions/users.js'
 import { reduxForm, Field } from 'redux-form';
 import { compose } from 'redux';
-import { PulseLoader } from 'react-spinners'; 
 import './login-page.css'
 
 export class LoginPage extends React.Component {
@@ -42,7 +41,6 @@ export class LoginPage extends React.Component {
         <button className="signin-button">Sign In</button>
       </form>
       <span>Don't have an account? <a className="signup-anchor" onClick={event => this.onClick(event)}>Sign up here.</a></span>
-      <PulseLoader color={'#fff'} loading={this.props.main.loading} className="loading-graphic" />
       </div>
       <h4 className="demo-login">Demo Login:</h4>
         <p className="demo-username">username: <i>John Smith</i></p> <p className="demo-password">password: <i>John Smith</i></p>
